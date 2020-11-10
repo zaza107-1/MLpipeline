@@ -16,7 +16,7 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 
 from azureml.core.dataset import Dataset
 url = 'https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv'
-dataset = Dataset.File.from_files(path = url)
+dataset = TabularDatasetFactory.from_delimited_files(path = url)
 ds = dataset.to_pandas_dataframe() ### YOUR CODE HERE ###
 
 x, y = clean_data(ds)
