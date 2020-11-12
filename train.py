@@ -19,7 +19,7 @@ url = 'https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-note
 dataset = TabularDatasetFactory.from_delimited_files(path = url)
 ds = dataset.to_pandas_dataframe() ### YOUR CODE HERE ###
 
-x, y = clean_data(ds)
+
 
 
 # TODO: Split data into train and test sets.
@@ -72,6 +72,9 @@ def main():
 
     accuracy = model.score(x_test, y_test)
     run.log("Accuracy", np.float(accuracy))
+
+
+x, y = clean_data(ds)
 
 if __name__ == '__main__':
     main()
