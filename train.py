@@ -17,7 +17,7 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 from azureml.core.dataset import Dataset
 url = 'https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv'
 dataset = TabularDatasetFactory.from_delimited_files(path = url)
-ds = dataset.to_pandas_dataframe() ### YOUR CODE HERE ###
+###ds = dataset.to_pandas_dataframe() ### YOUR CODE HERE ###
 
 
 
@@ -73,7 +73,7 @@ def main():
     run.log("Accuracy", np.float(accuracy))
 
 
-x, y = clean_data(ds)
+x, y = clean_data(dataset)
 
 x_train, y_train, x_test, y_test = train_test_split(x,y)
 run = Run.get_context()
