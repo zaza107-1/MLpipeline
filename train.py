@@ -25,8 +25,7 @@ ds = dataset.to_pandas_dataframe() ### YOUR CODE HERE ###
 # TODO: Split data into train and test sets.
 
 ### YOUR CODE HERE ###a
-x_train, y_train, x_test, y_test = train_test_split(x,y)
-run = Run.get_context()
+
 
 def clean_data(data):
     # Dict for cleaning data
@@ -75,6 +74,9 @@ def main():
 
 
 x, y = clean_data(ds)
+
+x_train, y_train, x_test, y_test = train_test_split(x,y)
+run = Run.get_context()
 
 if __name__ == '__main__':
     main()
