@@ -16,16 +16,15 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 
 from azureml.core.dataset import Dataset
 url = 'https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv'
-dataset = Dataset.File.from_files(path = url)
-ds = dataset.to_pandas_dataframe() ### YOUR CODE HERE ###
+dataset = TabularDatasetFactory.from_delimited_files(path = url)
+###ds = dataset.to_pandas_dataframe() ### YOUR CODE HERE ###
 
-x, y = clean_data(ds)
+
 
 
 # TODO: Split data into train and test sets.
 
 ### YOUR CODE HERE ###a
-x_train, y_train, x_test, y_test = train_test_split(x,y)
 run = Run.get_context()
 
 def clean_data(data):
@@ -54,7 +53,14 @@ def clean_data(data):
     x_df["poutcome"] = x_df.poutcome.apply(lambda s: 1 if s == "success" else 0)
 
     y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
-    
+    return x_df , y_df
+
+x, y = clean_data(dataset)
+
+x_train, y_train, x_test, y_test = train_test_split(x,y, test_size=0.33)
+
+
+
 
 def main():
     # Add arguments to script
@@ -72,6 +78,9 @@ def main():
 
     accuracy = model.score(x_test, y_test)
     run.log("Accuracy", np.float(accuracy))
+
+
+
 
 if __name__ == '__main__':
     main()
