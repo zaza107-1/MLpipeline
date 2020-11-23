@@ -35,6 +35,8 @@ The benefits of the early termination policy is also for reducing the time spent
 The objective of the AutoML was to detect the best model that reachs the higger value of the Accuracy metric.
 With the AutoML the best model was the VotingEnsemble with the higher accuracy among the other models.
 In the Voting Ensemble model, the duration column was the main factor for explaning the model.
+Voting Ensemble improves the machine learning performance by combining multiple models. Their predictions are based on the weighted average of predicted class probabilities (for classification tasks) according to the documentation.
+We can see the parameters of the prefittedsoftvotingclassifier with max_iter equal to 1000. n_jobs equal to 1. Learning rate 'constant'. L1_ratio = 0.8367 and power_t = 0.2222. Penalty = none. random_state = 1.
 
 ## Pipeline comparison
 The Logistic Regression model obtained a lower accuracy than the Voting Ensemble model.
